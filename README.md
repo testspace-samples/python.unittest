@@ -8,16 +8,16 @@ Sample demonstrates techniques for using Testspace with Python code and the [`un
 
   * Using a Testspace Project that is `connected` with this GitHub Repo
   * Using 3 Online CI services for demonstration purposes only
-  * Can review the Results at [testspace-samples:python.unittest](https://samples.testspace.com/projects/testspace-samples:python.unittest)  
-  * Refer to our [Getting Started](https://help.testspace.com/getting-started) help articles for more information
+  * Can review the Results at [testspace-samples:python.unittest](https://samples.testspace.com/projects/testspace-samples:python.unittest)
+  * Refer to our [Help](https://help.testspace.com/) for more information
 
 
 ***
 Using Multiple Online CI Services:
 
-[![Build Status](https://travis-ci.org/testspace-samples/php.phpunit.svg?branch=master)](https://travis-ci.org/testspace-samples/python.unittest)
+![Build](https://github.com/testspace-samples/python.unittest/workflows/Build/badge.svg)
+[![Build Status](https://travis-ci.org/testspace-samples/python.unittest.svg?branch=master)](https://travis-ci.org/testspace-samples/python.unittest)
 [![CircleCI](https://circleci.com/gh/testspace-samples/python.unittest.svg?style=svg)](https://circleci.com/gh/testspace-samples/python.unittest)
-[![Run Status](https://api.shippable.com/projects/5a1068f96301ee07008b7aa0/badge?branch=master)](https://app.shippable.com/github/testspace-samples/python.unittest)
 
 
 ***
@@ -27,12 +27,12 @@ Publishing **Test Content** using www.testspace.com.
 [![Space Metric](https://samples.testspace.com/spaces/757/metrics/683/badge?token=116815d4171e04500825d50efd8faae6795a50dd)](https://samples.testspace.com/spaces/757/schema/Code%20Coverage?utm_campaign=badge&utm_medium=referral&utm_source=coverage "Code Coverage (lines)")
 [![Space Metric](https://samples.testspace.com/spaces/757/metrics/684/badge?token=ccdfd31aa029f081c99f3b2748b7fa3714de4410)](https://samples.testspace.com/spaces/757/schema/Static%20Analysis?utm_campaign=badge&utm_medium=referral&utm_source=analysis "Static Analysis (issues)")
 
-*** 
+***
 
 In order to run this sample you will need a host workstation with installed python 2.6+.
 
 
-Download and configure the Testspace client 
+Download and configure the Testspace client
 <pre>
 mkdir -p $HOME/bin
 curl -s https://testspace-client.s3.amazonaws.com/testspace-linux.tgz | tar -zxvf- -C $HOME/bin
@@ -47,20 +47,20 @@ sudo apt-get install pylint
 </pre>
 
 
-Running Static Analysis: 
+Running Static Analysis:
 <pre>
 pylint stock_alerter/ -f parseable > analysis.txt
-</pre> 
+</pre>
 
-Running Tests with Code Coverage: 
+Running Tests with Code Coverage:
 
 <pre>
 nose2 --junit-xml --with-coverage
-</pre> 
+</pre>
 
 Push Content using Testspace client
 
 <pre>
-testspace analysis.txt{lint} nose2.xml{stock_alerter} coverage.xml 
-</pre> 
+testspace analysis.txt{lint} nose2.xml{stock_alerter} coverage.xml
+</pre>
 
