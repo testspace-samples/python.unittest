@@ -3,13 +3,13 @@ version: 2.0
 jobs:
   build:
     docker:
-      - image: circleci/python:2.7-stretch-browsers
+      - image: cimg/python:2.7-browsers
     steps:
+      - run: sudo apt update && sudo apt-get install pylint
       - checkout
       - run: "curl -fsSL https://testspace-client.s3.amazonaws.com/testspace-linux.tgz | sudo tar -zxvf- -C /usr/local/bin"
       - run: "testspace config url samples.testspace.com"
-      - run: "sudo pip install -r requirements.txt"
-      - run: "sudo apt-get install pylint"
+      - run: "pip install -r requirements.txt"
       - run: "pylint stock_alerter/ -f parseable > analysis.txt || true"
       - run: "nose2 --junit-xml --with-coverage"
       - run:
