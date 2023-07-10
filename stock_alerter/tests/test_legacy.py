@@ -12,7 +12,7 @@ class TestAlertProcessor(AlertProcessor):
 
 
 class AlertProcessorTest(unittest.TestCase):
-    @mock.patch("__builtin__.print")
+    @mock.patch("stock_alerter.legacy.print")
     def test_processor_characterization_1(self, mock_print):
         AlertProcessor()
         mock_print.assert_has_calls([mock.call("AAPL", 8),
@@ -22,7 +22,7 @@ class AlertProcessorTest(unittest.TestCase):
 
     def test_processor_characterization_2(self):
         processor = AlertProcessor(autorun=False)
-        with mock.patch("__builtin__.print") as mock_print:
+        with mock.patch("stock_alerter.legacy.print") as mock_print:
             processor.run()
         mock_print.assert_has_calls([mock.call("AAPL", 8),
                                      mock.call("GOOG", 15),
@@ -72,7 +72,7 @@ class AlertProcessorTest(unittest.TestCase):
         processor.parse_file = mock.Mock()
         processor.parse_file.return_value = [
             ('GOOG', datetime(2014, 2, 11, 14, 12, 22, 130000), 15)]
-        with mock.patch("__builtin__.print") as mock_print:
+        with mock.patch("stock_alerter.legacy.print") as mock_print:
             processor.run()
         mock_print.assert_called_with("GOOG", 15)
 
@@ -81,7 +81,7 @@ class AlertProcessorTest(unittest.TestCase):
         processor.parse_file = mock.Mock()
         processor.parse_file.return_value = [
             ('GOOG', datetime(2014, 2, 11, 14, 10, 22, 130000), 5)]
-        with mock.patch("__builtin__.print") as mock_print:
+        with mock.patch("stock_alerter.legacy.print") as mock_print:
             processor.run()
         self.assertFalse(mock_print.called)
 

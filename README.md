@@ -29,7 +29,7 @@ Publishing **Test Content** using www.testspace.com.
 
 ***
 
-In order to run this sample you will need a host workstation with installed python 2.6+.
+In order to run this sample you will need a host workstation with installed python 3.8+.
 
 
 Download and configure the Testspace client

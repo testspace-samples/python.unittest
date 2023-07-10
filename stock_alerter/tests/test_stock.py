@@ -1,8 +1,13 @@
-import unittest2 as unittest
+import unittest
 import collections
 from datetime import datetime, timedelta
 
 from ..stock import Stock, StockSignal
+
+try:
+    from collections.abc import Iterable
+except ImportError:
+    from collections import Iterable
 
 
 class StockTest(unittest.TestCase):
@@ -55,14 +60,14 @@ class StockCrossOverSignalTest(unittest.TestCase):
 
     def _flatten(self, timestamps):
         for timestamp in timestamps:
-            if not isinstance(timestamp, collections.Iterable):
+            if not isinstance(timestamp, Iterable):
                 yield timestamp
             else:
                 for value in self._flatten(timestamp):
                     yield value
 
     def _generate_timestamp_for_date(self, date, price_list):
-        if not isinstance(price_list, collections.Iterable):
+        if not isinstance(price_list, Iterable):
             return date
         else:
             delta = 1.0/len(price_list)

@@ -17,7 +17,7 @@ class ReaderTest(unittest.TestCase):
 class FileReaderTest(unittest.TestCase):
     def test_FileReader_opens_the_given_file(self):
         mock_open = mock.mock_open(read_data="")
-        with mock.patch("__builtin__.open", mock_open, create=True):
+        with mock.patch("stock_alerter.reader.open", mock_open, create=True):
             reader = FileReader("stocks.txt")
             updater = reader.get_updates()
             self.get_update(updater)
@@ -30,7 +30,7 @@ class FileReaderTest(unittest.TestCase):
         except StopIteration:
             pass
 
-    @mock.patch("__builtin__.open",
+    @mock.patch("stock_alerter.reader.open",
                 mock.mock_open(read_data="""\
 GOOG,2014-02-11T14:10:22.13,10"""))
     def test_FileReader_returns_the_file_contents(self):
@@ -41,7 +41,7 @@ GOOG,2014-02-11T14:10:22.13,10"""))
                           datetime(2014, 2, 11, 14, 10, 22, 130000),
                           10), update)
 
-    @mock.patch("__builtin__.open",
+    @mock.patch("stock_alerter.reader.open",
                 mock.mock_open(read_data="""\
 GOOG,2014-02-11T14:10:22.13,10
 MSFT,2014-02-11T00:00:00.0,8"""))

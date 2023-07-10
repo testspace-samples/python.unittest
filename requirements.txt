@@ -1,6 +1,4 @@
-cov-core
-enum
-mock==2.0.0
+mock
 nose2
-six==1.10.0
-unittest2
+nose2-cov
+six

@@ -1,6 +1,6 @@
 from __future__ import print_function
 import smtplib
-import unittest2 as unittest
+import unittest
 import mock
 
 from ..action import EmailAction, PrintAction
@@ -28,7 +28,7 @@ class AlertMessageMatcher:
             self.expected["Message"] == other._payload
 
 
-@mock.patch("__builtin__.print")
+@mock.patch("stock_alerter.action.print")
 class PrintActionTest(unittest.TestCase):
     def test_executing_action_prints_message(self, mock_print):
         action = PrintAction()
