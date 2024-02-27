@@ -3,7 +3,7 @@ version: 2.0
 jobs:
   build:
     docker:
-      - image: cimg/python:3.10-browsers
+      - image: cimg/python:3.12-browsers
     steps:
       - run: sudo apt update && sudo apt-get install pylint
       - checkout
